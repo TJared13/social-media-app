@@ -5,6 +5,7 @@ import {RssFeed, Chat, PlayCircleFilledOutlined, Group, Bookmark, HelpOutline, W
 import '../styles/leftbar.css';
 
 export default function Leftbar() {
+
     return (
         <div className='leftbar' >
             <div className="leftbarWrapper">

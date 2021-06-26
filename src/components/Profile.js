@@ -1,12 +1,15 @@
 import React from 'react';
-import Topbar from '../components/Topbar';
-import Leftbar from '../components/Leftbar';
-import Feed from '../components/Feed';
-import Rightbar from '../components/Rightbar';
+import Topbar from './Header';
+import Leftbar from './Leftbar';
+import Feed from './Feed';
+import Rightbar from './Rightbar';
 
 import '../styles/profile.css';
 
 export default function Profile() {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
     return (
         <>
         <Topbar />
@@ -15,8 +18,8 @@ export default function Profile() {
             <div className="profileRight"> 
                 <div className="profileRightTop">
                     <div className="profileCover"> 
-                        <img src="assets/post/3.jpeg" alt="profile cover" className="profileCoverImg" />
-                        <img src="assets/post/7.jpeg" alt="profile user" className="profileUserImg" />
+                        <img src={`${PF}post/3.jpeg`} alt="profile cover" className="profileCoverImg" />
+                        <img src={`${PF}person/7.jpeg`} alt="profile user" className="profileUserImg" />
                     </div>
                     <div className="profileInfo">
                         <h4 className="profileInfoName">Trevin Jared</h4>
@@ -24,7 +27,7 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="profileRightBottom">
-                <Feed />
+                <Feed username='john'/>
                 <Rightbar profile />
                 </div>
             </div>

@@ -4,12 +4,13 @@ import Online from '../components/Online';
 import '../styles/rightbar.css';
 
 export default function Rightbar({profile}) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     const HomeRightbar = () => {
         return (
             <>
                 <div className="birthdayContainer">
-                <img src="/assets/gift.png" alt="" className="birthdayImg" />
+                <img src={`${PF}gift.png`} alt="" className="birthdayImg" />
                 <span className="birthdayText">
                         <b>3 others</b> have a birthday today</span>
                 </div>
@@ -24,6 +25,9 @@ export default function Rightbar({profile}) {
     };
 
     const ProfileRightbar = () => {
+        const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
         return ( 
             <>
             <h4 className="rightbarTitle">User information</h4>
@@ -48,27 +52,27 @@ export default function Rightbar({profile}) {
             <h4 className="rightbarTitle">User Friends</h4>
             <div className="rightbarFollowings">
                 <div className="rightbarFollowing">
-                    <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/1.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">John Carter</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/2.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/2.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Iron Man</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/3.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/3.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Seven Lions</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/4.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/4.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Illenium</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/5.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/5.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Rezz</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="" className="rightbarFollowingImg" />
+                    <img src={`${PF}person/6.jpeg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">BTSM</span>
                 </div>
             </div>
