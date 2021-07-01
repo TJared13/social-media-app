@@ -1,8 +1,7 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/share.css";
-import { useRef, useState } from "react";
 import axios from "axios";
 
 export default function Share() {
@@ -33,7 +32,10 @@ export default function Share() {
 
 		try {
 			await axios.post("/posts", newPost);
-		} catch (err) {}
+			window.location.reload();
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	return (
@@ -65,7 +67,7 @@ export default function Share() {
 								style={{ display: "none" }}
 								type="file"
 								id="file"
-								accept=".png, .jpeg, .jpg, .gif"
+								accept=".png, .jpeg, .jpg"
 								onChange={(e) => setFile(e.target.files[0])}
 							/>
 						</label>

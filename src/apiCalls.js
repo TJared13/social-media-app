@@ -9,3 +9,12 @@ export const loginCall = async (userCredential, dispatch) => {
 		dispatch({ type: "LOGIN_FAILURE", payload: err });
 	}
 };
+
+export const logoutCall = (res, dispatch) => {
+	dispatch({ type: "LOGOUT_USER" });
+	try {
+		axios.delete("/auth/logout").then(res.sendStatus(200));
+	} catch (err) {
+		console.log(err);
+	}
+};
