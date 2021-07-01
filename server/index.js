@@ -3,19 +3,20 @@ const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoute = require("../server/controllers/userController");
-const authRoute = require("../server/controllers/authController");
+const authRoute = require("./controllers/authController");
 const postRoute = require("../server/controllers/postController");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const path = require("path");
 const { uploadFile, getFileStream } = require("./controllers/awsController");
 
-const { SERVER_PORT, MONGO_URL } = process.env;
+const { SERVER_PORT, SESSION_SECRET, MONGO_URL } = process.env;
 
 mongoose.connect(
 	`${MONGO_URL}`,
@@ -31,6 +32,16 @@ app.use("/images", express.static(path.join("public/images")));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(
+	session({
+		saveUninitialized: true,
+		resave: false,
+		secret: SESSION_SECRET,
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24 * 7 * 4
+		}
+	})
+);
 
 //AWS S3
 app.get("/images/:key", (req, res) => {
@@ -39,7 +50,8 @@ app.get("/images/:key", (req, res) => {
 
 	readStream.pipe(res);
 });
-app.post("/uploads", upload.single("image"), async (req, res) => {
+
+app.post("/upload", upload.single("file"), async (req, res) => {
 	const file = req.file;
 	const result = await uploadFile(file);
 	await unlinkFile(file.path);

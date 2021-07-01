@@ -41,19 +41,19 @@ export default function Register() {
 				<div className="registerRight">
 					<form className="registerBox" onSubmit={handleClick}>
 						<input
-							Placeholder="Username"
+							placeholder="Username"
 							required
 							ref={username}
 							className="registerInput"
 						/>
 						<input
-							Placeholder="email"
+							placeholder="email"
 							required
 							ref={email}
 							className="registerInput"
 						/>
 						<input
-							Placeholder="Password"
+							placeholder="Password"
 							type="password"
 							required
 							ref={password}
@@ -61,7 +61,7 @@ export default function Register() {
 							className="registerInput"
 						/>
 						<input
-							Placeholder="Re-type Password"
+							placeholder="Re-type Password"
 							type="password"
 							required
 							ref={passwordAgain}
