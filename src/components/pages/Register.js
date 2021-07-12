@@ -1,7 +1,8 @@
-import axios from "axios";
-import { useRef } from "react";
-import { useHistory } from "react-router";
-import "../styles/register.css";
+import axios from 'axios';
+import { useRef } from 'react';
+import { useHistory } from 'react-router';
+import '../../styles/register.css';
+import ParticleBackground from '../ParticleBackground';
 
 export default function Register() {
 	const username = useRef();
@@ -13,7 +14,7 @@ export default function Register() {
 	const handleClick = async (e) => {
 		e.preventDefault();
 		if (passwordAgain.current.value !== password.current.value) {
-			passwordAgain.current.setCustomValidity("Passwords do not match!");
+			passwordAgain.current.setCustomValidity('Passwords do not match!');
 		} else {
 			const user = {
 				username: username.current.value,
@@ -21,8 +22,8 @@ export default function Register() {
 				password: password.current.value
 			};
 			try {
-				await axios.post("/auth/register", user);
-				history.push("/login");
+				await axios.post('/auth/register', user);
+				history.push('/login');
 			} catch (err) {
 				console.log(err);
 			}
@@ -76,6 +77,9 @@ export default function Register() {
 						</button>
 					</form>
 				</div>
+			</div>
+			<div className="particles">
+				<ParticleBackground />
 			</div>
 		</div>
 	);

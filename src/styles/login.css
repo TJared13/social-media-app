@@ -11,6 +11,7 @@
 	width: 70%;
 	height: 70%;
 	display: flex;
+	z-index: 20;
 }
 
 .loginLeft,
@@ -89,4 +90,11 @@
 	font-size: 20px;
 	font-weight: 500;
 	cursor: pointer;
+}
+
+.particles {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
 }

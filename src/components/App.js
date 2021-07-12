@@ -4,10 +4,10 @@ import {
 	Route,
 	Redirect
 } from 'react-router-dom';
-import Home from './Home';
-import Register from './Register';
-import Profile from './Profile';
-import Login from './Login';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
@@ -18,7 +18,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					{user ? <Home /> : <Register />}
+					{user ? <Home /> : <Login />}
 				</Route>
 
 				<Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
