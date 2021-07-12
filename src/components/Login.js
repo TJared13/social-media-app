@@ -1,8 +1,9 @@
-import React, { useRef, useContext } from "react";
-import "../styles/login.css";
-import { loginCall } from "../apiCalls";
-import { AuthContext } from "../context/AuthContext";
-import { CircularProgress } from "@material-ui/core";
+import React, { useRef, useContext } from 'react';
+import '../styles/login.css';
+import { loginCall } from '../apiCalls';
+import { AuthContext } from '../context/AuthContext';
+import { CircularProgress } from '@material-ui/core';
+import ParticleBackground from './ParticleBackground';
 
 export default function Login() {
 	const username = useRef();
@@ -47,7 +48,7 @@ export default function Login() {
 							{isFetching ? (
 								<CircularProgress color="white" size="20px" />
 							) : (
-								"Log In"
+								'Log In'
 							)}
 						</button>
 						<span className="loginForgot">Forgot Password?</span>
@@ -55,12 +56,13 @@ export default function Login() {
 							{isFetching ? (
 								<CircularProgress color="white" size="20px" />
 							) : (
-								"Create an account"
+								'Create an account'
 							)}
 						</button>
 					</form>
 				</div>
 			</div>
+			{/* <ParticleBackground /> */}
 		</div>
 	);
 }

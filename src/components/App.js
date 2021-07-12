@@ -3,13 +3,13 @@ import {
 	Switch,
 	Route,
 	Redirect
-} from "react-router-dom";
-import Home from "./Home";
-import Register from "./Register";
-import Profile from "./Profile";
-import Login from "./Login";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+} from 'react-router-dom';
+import Home from './Home';
+import Register from './Register';
+import Profile from './Profile';
+import Login from './Login';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 function App() {
 	const { user } = useContext(AuthContext);
