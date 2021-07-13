@@ -1,9 +1,9 @@
-import "../styles/topbar.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
-import { Link, useHistory } from "react-router-dom";
-import { useContext } from "react";
-import { logoutCall } from "../apiCalls";
-import { AuthContext } from "../context/AuthContext";
+import '../styles/topbar.css';
+import { Search, Person, Chat, Notifications } from '@material-ui/icons';
+import { Link, useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { logoutCall } from '../apiCalls';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Topbar() {
 	const history = useHistory();
@@ -13,14 +13,14 @@ export default function Topbar() {
 	const handleLogout = (e) => {
 		e.preventDefault();
 		logoutCall(dispatch);
-		history.push("/login");
+		history.push('/login');
 		console.log(user);
 	};
 
 	return (
 		<div className="topbarContainer">
 			<div className="topbarLeft">
-				<Link to="/" style={{ textDecoration: "none" }}>
+				<Link to="/" style={{ textDecoration: 'none' }}>
 					<span className="logo">SocialCenter</span>
 				</Link>
 			</div>
@@ -46,8 +46,10 @@ export default function Topbar() {
 						<span className="topbarIconBadge">1</span>
 					</div>
 					<div className="topbarIconItem">
-						<Chat />
-						<span className="topbarIconBadge">2</span>
+						<Link to="/messenger">
+							<Chat />
+							<span className="topbarIconBadge">2</span>
+						</Link>
 					</div>
 					<div className="topbarIconItem">
 						<Notifications />
@@ -59,7 +61,7 @@ export default function Topbar() {
 						src={
 							user.profilePicture
 								? PF + user.profilePicture
-								: PF + "person/noAvatar.png"
+								: PF + 'person/noAvatar.png'
 						}
 						alt="ProfilePic"
 						className="topbarImg"
