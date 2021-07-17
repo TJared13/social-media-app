@@ -36,7 +36,7 @@ app.use(helmet());
 app.use(morgan('common'));
 app.use(
 	session({
-		saveUninitialized: true,
+		saveUninitialized: false,
 		resave: false,
 		secret: SESSION_SECRET,
 		cookie: {
