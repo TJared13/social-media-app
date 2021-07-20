@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { MoreVert } from "@material-ui/icons";
-import { format } from "timeago.js";
-import "../styles/post.css";
-import { AuthContext } from "../context/AuthContext";
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { MoreVert } from '@material-ui/icons';
+import { format } from 'timeago.js';
+import '../styles/post.css';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Post({ post }) {
 	const [like, setLike] = useState(post.likes.length);
@@ -27,7 +27,7 @@ export default function Post({ post }) {
 
 	const likeHandler = () => {
 		try {
-			axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+			axios.put('/posts/' + post._id + '/like', { userId: currentUser._id });
 		} catch (err) {}
 		setLike(isLiked ? like - 1 : like + 1);
 		setIsLiked(!isLiked);
@@ -43,7 +43,7 @@ export default function Post({ post }) {
 								src={
 									user.profilePicture
 										? PF + user.profilePicture
-										: PF + "person/noAvatar.png"
+										: PF + 'person/noAvatar.png'
 								}
 								alt="user profile"
 								className="postProfileImg"

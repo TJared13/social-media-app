@@ -62,6 +62,53 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 	res.status(200).send({ imagePath: `/images/${result.Key}` });
 });
 
+//SOCKET-IO
+const io = require('socket.io')(3132, {
+	cors: {
+		origin: 'http://localhost:3000'
+	}
+});
+
+let users = [];
+
+const addUser = (userId, socketId) => {
+	!users.some((user) => user.userId === userId) &&
+		users.push({ userId, socketId });
+};
+
+const removeUser = (socketId) => {
+	users = users.filter((user) => user.socketId !== socketId);
+};
+
+const getUser = (userId) => {
+	return users.find((user) => user.userId === userId);
+};
+
+io.on('connection', (socket) => {
+	//WHEN CONNECT
+	console.log('a user has connected');
+	//take userId and socket Id from user
+	socket.on('addUser', (userId) => {
+		addUser(userId, socket.id);
+		io.emit('getUsers', users);
+	});
+	//SEND AND GET MESSAGE
+	socket.on('sendMessage', ({ senderId, receiverId, text }) => {
+		const user = getUser(receiverId);
+		io.to(user.socketId).emit('getMessage', {
+			senderId,
+			text
+		});
+	});
+
+	//WHEN DISCONNECT
+	socket.on('disconnect', () => {
+		console.log('user disconnected');
+		removeUser(socket.id);
+		io.emit('getUsers', users);
+	});
+});
+
 //ROUTES
 app.use('/api/users', userCtrl);
 app.use('/api/auth', authCtrl);

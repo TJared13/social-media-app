@@ -1,6 +1,6 @@
-require("dotenv").config();
-const fs = require("fs");
-const aws = require("aws-sdk");
+require('dotenv').config();
+const fs = require('fs');
+const aws = require('aws-sdk');
 const { AWS_BUCKET_NAME, AWS_REGION, AWS_KEY, AWS_SECRET } = process.env;
 
 const s3 = new aws.S3({
@@ -13,7 +13,7 @@ const uploadFile = (filename) => {
 
 	const params = {
 		Bucket: AWS_BUCKET_NAME,
-		Key: "photo.jpg",
+		Key: 'photo.jpg',
 		Body: fileContent
 	};
 
@@ -21,13 +21,13 @@ const uploadFile = (filename) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log("File uploaded successfully", data.Location);
+			console.log('File uploaded successfully', data.Location);
 		}
 	});
 };
 exports.uploadFile = uploadFile;
 
-// //DOWNLOAD FROM s3
+//DOWNLOAD FROM s3
 // function getFileStream(fileKey) {
 // 	const downloadParams = {
 // 		Key: fileKey,
